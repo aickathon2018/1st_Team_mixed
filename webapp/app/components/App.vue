@@ -1,12 +1,15 @@
 <template>
   <Page>
     <ActionBar title="Delively" />
-    <StackLayout>
-      <Button text="Take Picture" @tap="takePicture" />
-      <Label :text="img" />
-      <Image src="~/assets/images/mini-logo.svg" stretch="none" />
-      <Button text="Login" @tap="$navigateTo(menuPage)" />
-    </StackLayout>
+    <DockLayout stretchLastChild="false">
+      <StackLayout dock="top">
+        <Button text="Take Picture" @tap="takePicture" />
+        <Label :text="img" />
+        <Image src="~/assets/images/mini-logo.png" width="50" height="50" />
+        <Button text="Login"/>
+      </StackLayout>
+      <Button text="Login" dock="bottom" @tap="$navigateTo(menuPage)" />
+    </DockLayout>
   </Page>
 </template>
 
@@ -28,7 +31,12 @@ export default {
         .requestPermissions()
         .then(() => {
           camera
-            .takePicture({ width: 300, height: 300, keepAspectRatio: true, saveToGallery: true })
+            .takePicture({
+              width: 300,
+              height: 300,
+              keepAspectRatio: true,
+              saveToGallery: true
+            })
             .then(imageAsset => {
               this.img = imageAsset
               console.log(this.img)

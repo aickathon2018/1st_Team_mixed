@@ -4,6 +4,7 @@
     <StackLayout>
       <Button text="Take Picture" @tap="takePicture" />
       <Label :text="img" />
+      <Image src="~/assets/images/mini-logo.svg" stretch="none" />
       <Button text="Login" @tap="$navigateTo(menuPage)" />
     </StackLayout>
   </Page>

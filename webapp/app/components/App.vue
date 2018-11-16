@@ -4,18 +4,21 @@
     <StackLayout>
       <Button text="Take Picture" @tap="takePicture" />
       <Label :text="img" />
+      <Button text="Login" @tap="$navigateTo(menuPage)" />
     </StackLayout>
   </Page>
 </template>
 
 <script>
 import * as camera from 'nativescript-camera'
+import Menu from './Menu'
 
 export default {
   data () {
     return {
       msg: 'Hello World!',
-      img: ''
+      img: '',
+      menuPage: Menu
     }
   },
   methods: {
@@ -24,7 +27,7 @@ export default {
         .requestPermissions()
         .then(() => {
           camera
-            .takePicture({ width: 300, height: 300, keepAspectRatio: true })
+            .takePicture({ width: 300, height: 300, keepAspectRatio: true, saveToGallery: true })
             .then(imageAsset => {
               this.img = imageAsset
               console.log(this.img)
@@ -39,7 +42,7 @@ export default {
 
 <style scoped>
 ActionBar {
-  background-color: #53ba82;
+  background-color: #46c3e3;
   color: #ffffff;
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <Page actionBarHidden="true">
+  <Page actionBarHidden="true" @loaded="hideStatusBar" @unloaded="showStatusBar">
     <DockLayout stretchLastChild="false">
       <Image src="~/assets/images/front.png" dock="top" />
       <StackLayout dock="bottom" padding="22">
@@ -13,6 +13,7 @@
 
 <script>
 import * as camera from 'nativescript-camera'
+import * as statusBar from 'nativescript-status-bar'
 import Menu from './Menu'
 
 export default {
@@ -23,6 +24,12 @@ export default {
     }
   },
   methods: {
+    hideStatusBar () {
+      statusBar.hide()
+    },
+    showStatusBar () {
+      statusBar.show()
+    },
     takePicture () {
       camera
         .requestPermissions()

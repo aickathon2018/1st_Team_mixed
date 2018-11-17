@@ -36,7 +36,6 @@
 
 <script>
 import * as application from "tns-core-modules/application"
-import * as Modal from './Modal'
 
 export default {
   data () {

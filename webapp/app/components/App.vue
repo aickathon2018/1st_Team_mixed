@@ -2,11 +2,9 @@
   <Page actionBarHidden="true">
     <DockLayout stretchLastChild="false">
       <Image src="~/assets/images/front.png" dock="top" />
-      <StackLayout dock="bottom" padding="16">
-        <TextView editable="false">
-          <Span text="People trust that their on-time" />
-          <Span text="delivery is going to happen." />
-        </TextView>
+      <StackLayout dock="bottom" padding="8">
+        <Label text="People trust that their on-time" />
+        <Label text="delivery is going to happen." />
         <Button text="Login" dock="bottom" @tap="$navigateTo(menuPage)" />
       </StackLayout>
     </DockLayout>
@@ -54,9 +52,18 @@ ActionBar {
   color: #ffffff;
 }
 
+Label {
+  text-align: center;
+  font-size: 20;
+  color: #000000;
+  margin: 0 8 2;
+}
+
 Button {
   background-color: #5558e2;
+  color: #ffffff;
   border-radius: 12;
+  margin: 8;
 }
 
 .message {

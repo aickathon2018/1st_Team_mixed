@@ -16,19 +16,16 @@
           <Button text="Settings" />
         </StackLayout>
       </DockLayout>
-      <DockLayout v-if="displayModal" height="100%" width="100%">
-        <StackLayout dock="left" width="40" backgroundColor="rgba(0, 0, 0, 0.5)" />
-        <StackLayout dock="right" width="40" backgroundColor="rgba(0, 0, 0, 0.5)" />
-        <StackLayout dock="top" height="60" backgroundColor="rgba(0, 0, 0, 0.5)" />
-        <StackLayout dock="bottom" height="60" backgroundColor="rgba(0, 0, 0, 0.5)" />
-        <StackLayout dock="center" borderRadius="11" backgroundColor="#ffffff">
-          <AbsoluteLayout>
-            <GridLayout>
-              <Button row="0" col="0" class="close-btn" horizontalAlignment="right" text="y" left="100%" />
-            </GridLayout>
-          </AbsoluteLayout>
+      <DockLayout v-if="displayModal" height="100%" width="100%" backgroundColor="rgba(0, 0, 0, 0.5)">
+        <StackLayout dock="left" width="40" />
+        <StackLayout dock="right" width="40" />
+        <StackLayout dock="top" height="60" />
+        <StackLayout dock="bottom" height="60" />
+        <StackLayout dock="center" borderRadius="11" backgroundColor="#ffffff" stretchLastChild="false">
+          <Image src="~/assets/images/emoji.png" margin="40" height="100" />
           <Label text="You have a new task!" />
-          <Label text="Please collect the parcel at Warehouse A before 12/11/2017." />
+          <TextView editable="false" text="Please proceed to Warehouse A to collect the last parcel latest by 2018-11-19."
+            padding="20" textAlignment="center" backgroundColor="transparent" borderColor="transparent" />
         </StackLayout>
       </DockLayout>
       <StackLayout height="90%" width="90%" />

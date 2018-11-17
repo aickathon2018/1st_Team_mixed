@@ -26,6 +26,21 @@
         </StackLayout>
         <StackLayout dock="center" height="20" />
       </DockLayout>
+      <DockLayout v-if="completed" height="100%" width="100%" backgroundColor="rgba(0, 0, 0, 0.5)">
+        <StackLayout dock="left" width="40" />
+        <StackLayout dock="right" width="40" />
+        <StackLayout dock="top" height="60" />
+        <StackLayout dock="bottom" height="60" />
+        <DockLayout dock="center" borderRadius="11" backgroundColor="#ffffff" stretchLastChild="false">
+          <StackLayout dock="top">
+            <Image src="~/assets/images/emoji.png" margin="40" height="100" />
+            <Label text="You have a new task!" />
+            <TextView editable="false" text="Please collect the parcel at Warehouse A before 12/11/2017."
+              padding="20" textAlignment="center" backgroundColor="transparent" borderColor="transparent" />
+          </StackLayout>
+          <Button dock="bottom" text="Confirm" margin="25" @tap="$navigateBack"/>
+        </DockLayout>
+      </DockLayout>
       <StackLayout height="100%" width="100%" text="hello">
         <StackLayout height="90%" width="90%" />
       </StackLayout>
@@ -37,17 +52,20 @@
 import * as camera from 'nativescript-camera'
 import * as imageSource from "tns-core-modules/image-source"
 import { Image } from "tns-core-modules/ui/image"
-import { File } from 'tns-core-modules/file-system'
-import * as fs from 'file-system'
+import { knownFolders, File } from 'tns-core-modules/file-system'
+import * as FormData from 'form-data'
+// import * as fs from 'file-system'
+// import { File } from 'file-system'
 import * as bgHttp from 'nativescript-background-http'
-// import axios from 'axios'
+import axios from 'axios'
 
 export default {
   props: ['id'],
   data () {
     return {
+      completed: false,
       parcel: {
-        id: '75e7cb59',
+        id: 'cb5975e7',
         address: '123, Fake Street',
         receive_by: '2018-02-29',
         deliver_by: '2017-11-11'
@@ -62,33 +80,45 @@ export default {
           camera.takePicture({
             width: 300,
             height: 300,
-            keepAspectRatio: true
+            keepAspectRatio: true,
+            saveToGallery: false
           })
         )
         .catch(e => console.error(e))
-        .then(imageSource => {
-          const folder = fs.knownFolders.documents()
-          const path = fs.path.join(folder.path, 'file.png')
-          const saved = imageSource.saveToFile(path, 'png')
-          const session = bgHttp.session('image-upload')
+        .then(imageAsset => {
+          // const folder = fs.knownFolders.documents()
+          // const path = fs.path.join(folder.path, 'file.jpg')
+          // const saved = imageSource.saveToFile(path, 'jpg')
+          // const session = bgHttp.session('image-upload')
 
-          const request = {
-            url: `http://172.16.10.38:3000/parcel/${this.id}/sign`,
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/octet-stream'
-            }
-          }
+          // const request = {
+          //   url: `http://172.16.10.38:3000/parcel/${this.id}/sign`,
+          //   method: 'POST',
+          //   headers: {
+          //     'Content-Type': 'application/octet-stream'
+          //   }
+          // }
 
-          const task = session.uploadFile(path, request)
-          console.log(task)
-          return task
+          // const task = session.uploadFile(path, request)
+          // console.log(task)
+          // return task
           // console.log(imageAsset._android)
           // const image = imageSource.fromFile(imageAsset._android)
           // console.log(image.toBase64String('png'))
+
+          console.log(imageAsset)
+
+          const file = File.fromPath(imageAsset._android)
+          // const file = knownFolders.currentApp().getFile(imageAsset._android)
+          const data = file.readSync(e => console.error(e))
+          this.completed = true
+          return data
         })
-        // .then(image => axios.post(`http://172.16.10.38:3000/parcel/${this.id}/sign`, image))
-        // .then(response => this.$navigateBack())
+        .then(image => {
+          const data = new FormData()
+          data.append('f', image)
+          return axios(`http://172.16.10.38:3000/parcel/${this.id}/sign`, data)
+        })
         .then(d => console.log(d))
         .catch(e => console.error(e))
     }

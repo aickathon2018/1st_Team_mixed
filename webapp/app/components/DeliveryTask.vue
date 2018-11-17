@@ -29,25 +29,25 @@
 </template>
 
 <script>
+import DeliveryDetail from './DeliveryDetail'
+
 export default {
   data () {
     return {
-      parcels: [
-        { id: '75e7cb59' },
-        { id: 'cb5975e7' }
-      ]
+      detailPage: DeliveryDetail,
+      parcels: [{ id: '75e7cb59' }, { id: 'cb5975e7' }]
     }
   },
   methods: {
     browseParcel (event) {
-      console.log(event.item.id)
+      this.$navigateTo(DeliveryDetail, { props: { id: event.item.id } })
     }
   }
 }
 </script>
 
 <style scoped>
-Button {
+button {
 }
 
 .detail-btn {

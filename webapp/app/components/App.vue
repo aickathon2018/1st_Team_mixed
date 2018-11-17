@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import * as camera from 'nativescript-camera'
 import * as statusBar from 'nativescript-status-bar'
 import Delivery from './Delivery'
 import Recipient from './Recipient'
@@ -32,25 +31,6 @@ export default {
     },
     showStatusBar () {
       statusBar.show()
-    },
-    takePicture () {
-      camera
-        .requestPermissions()
-        .then(() => {
-          camera
-            .takePicture({
-              width: 300,
-              height: 300,
-              keepAspectRatio: true,
-              saveToGallery: true
-            })
-            .then(imageAsset => {
-              this.img = imageAsset
-              console.log(this.img)
-            })
-            .catch(e => console.error(e))
-        })
-        .catch(e => console.error(e))
     }
   }
 }

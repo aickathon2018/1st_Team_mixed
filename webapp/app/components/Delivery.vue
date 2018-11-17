@@ -1,6 +1,6 @@
 <template>
   <Page actionBarHidden="true" @loaded="onLoaded">
-    <AbsoluteLayout top="0" left="0" backgroundColor="#3c495e">
+    <AbsoluteLayout top="0" left="0" backgroundColor="#43b883">
       <DockLayout height="100%" width="100%">
         <Label text="Welcome back!" dock="top" margin="0" height="22%" lineHeight="100%" color="#ffffff" textAlign="left" backgroundColor="#46c3e3" />
         <StackLayout dock="bottom" backgroundColor="#e6e6e6" />
@@ -21,17 +21,18 @@
         <StackLayout dock="right" width="40" backgroundColor="rgba(0, 0, 0, 0.5)" />
         <StackLayout dock="top" height="60" backgroundColor="rgba(0, 0, 0, 0.5)" />
         <StackLayout dock="bottom" height="60" backgroundColor="rgba(0, 0, 0, 0.5)" />
-        <StackLayout dock="center" borderRadius="11" backgroundColor="#43b883">
-          <AbsoluteLayout backgroundColor="#000">
+        <StackLayout dock="center" borderRadius="11" backgroundColor="#ffffff">
+          <AbsoluteLayout>
             <GridLayout>
-              <Button horizontalAlignment="right" text="x" left="100%" />
+              <Button row="0" col="0" class="close-btn" horizontalAlignment="right" text="y" left="100%" />
             </GridLayout>
           </AbsoluteLayout>
+          <Label text="You have a new task!" />
+          <Label text="Please collect the parcel at Warehouse A before 12/11/2017." />
         </StackLayout>
       </DockLayout>
-      <StackLayout height="100%" width="100%" text="hello">
-        <StackLayout height="90%" width="90%" />
-        <Button backgroundColor="rgba(0, 0, 0, 0)" horizontalAlignment="right" @tap="toggleModal" />
+      <StackLayout height="90%" width="90%" />
+      <Button backgroundColor="rgba(0,0,0,0)" horizontalAlignment="right" @tap="toggleModal" />
       </StackLayout>
     </AbsoluteLayout>
   </Page>
@@ -63,6 +64,9 @@ export default {
 ActionBar {
   background-color: #46c3e3;
   color: #ffffff;
+}
+close-btn{
+  width:10;
 }
 
 button {

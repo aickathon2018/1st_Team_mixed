@@ -2,7 +2,7 @@
   <Page actionBarHidden="true">
     <AbsoluteLayout top="0" left="0" backgroundColor="#3c495e">
       <DockLayout height="100%" width="100%">
-        <Label text="Parcel detail" dock="top" margin="0" height="22%" lineHeight="100%" color="#ffffff" textAlign="left" backgroundColor="#46c3e3" />
+        <Label text="Parcel details" dock="top" margin="0" height="22%" lineHeight="10" color="#ffffff" textAlign="left" backgroundColor="#46c3e3" />
         <StackLayout dock="bottom" backgroundColor="#e6e6e6" />
       </DockLayout>
       <DockLayout top="70" width="100%">
@@ -10,7 +10,7 @@
         <StackLayout dock="right" width="30" />
         <StackLayout dock="top" padding="22 8" borderRadius="11" backgroundColor="rgba(255, 255, 255, .4)">
           <Image src="~/assets/images/face.png" width="80" />
-          <Label text="Gavin" paddingBottom="36" />
+          <Label text="Iris" paddingBottom="36" />
         </StackLayout>
         <StackLayout dock="bottom" borderRadius="11" paddingBottom="8" backgroundColor="rgba(255, 255, 255, .4)">
           <DockLayout paddingTop="8" stretchLastChild="false">
@@ -50,7 +50,7 @@ export default {
         id: '75e7cb59',
         address: '123, Fake Street',
         receive_by: '2018-02-29',
-        deliver_by: '2017-11-11'
+        deliver_by: 'Gavin'
       }
     }
   },

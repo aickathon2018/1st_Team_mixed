@@ -2,7 +2,7 @@
   <Page actionBarHidden="true">
     <DockLayout stretchLastChild="false">
       <Image src="~/assets/images/front.png" dock="top" />
-      <StackLayout dock="bottom" padding="8">
+      <StackLayout dock="bottom" padding="22">
         <Label text="People trust that their on-time" />
         <Label text="delivery is going to happen." />
         <Button text="Login" dock="bottom" @tap="$navigateTo(menuPage)" />
@@ -56,14 +56,14 @@ Label {
   text-align: center;
   font-size: 20;
   color: #000000;
-  margin: 0 8 2;
+  margin: 0 8;
 }
 
 Button {
   background-color: #5558e2;
   color: #ffffff;
   border-radius: 12;
-  margin: 8;
+  margin: 16 8;
 }
 
 .message {

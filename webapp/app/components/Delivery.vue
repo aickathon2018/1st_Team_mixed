@@ -29,7 +29,10 @@
           </AbsoluteLayout>
         </StackLayout>
       </DockLayout>
-      <Button text="hello" @tap="toggleModal" />
+      <StackLayout height="100%" width="100%" text="hello">
+        <StackLayout height="90%" width="90%" />
+        <Button backgroundColor="rgba(0, 0, 0, 0)" horizontalAlignment="right" @tap="toggleModal" />
+      </StackLayout>
     </AbsoluteLayout>
   </Page>
 </template>

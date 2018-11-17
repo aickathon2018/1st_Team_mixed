@@ -57,15 +57,15 @@ export default {
 </script>
 
 <style>
-Label {
+label {
   text-align: center;
   font-size: 20;
   color: #000000;
   margin: 2 8;
 }
 
-Button {
-  background-color: #5558e2;
+button {
+  background-color: #46c3e3;
   color: #ffffff;
   border-radius: 12;
 }

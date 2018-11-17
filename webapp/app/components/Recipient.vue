@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import * as application from "tns-core-modules/application"
+import * as application from 'tns-core-modules/application'
 
 export default {
   data () {
@@ -60,7 +60,7 @@ ActionBar {
   color: #ffffff;
 }
 
-Button {
+button {
   margin: 6;
 }
 </style>

@@ -8,11 +8,11 @@
       <DockLayout top="70" width="100%">
         <StackLayout dock="left" width="30" />
         <StackLayout dock="right" width="30" />
-        <StackLayout dock="center" padding="22 8" borderRadius="11" backgroundColor="rgba(255, 255, 255, 0.4)">
+        <StackLayout dock="center" padding="22 8" borderRadius="11" backgroundColor="rgba(255, 255, 255, 0.7)">
           <Image src="~/assets/images/face.png" width="80" />
           <Label text="Gavin" paddingBottom="36" />
           <Button text="My Account" />
-          <Button text="Manage Task" />
+          <Button text="Manage Task" @tap="$navigateTo(taskPage)" />
           <Button text="Settings" />
         </StackLayout>
       </DockLayout>
@@ -38,12 +38,14 @@
 </template>
 
 <script>
-import * as application from "tns-core-modules/application"
+import * as application from 'tns-core-modules/application'
+import DeliveryTask from './DeliveryTask'
 
 export default {
   data () {
     return {
-      displayModal: 0
+      displayModal: 0,
+      taskPage: DeliveryTask
     }
   },
   methods: {
@@ -63,7 +65,7 @@ ActionBar {
   color: #ffffff;
 }
 
-Button {
+button {
   margin: 6;
 }
 </style>
